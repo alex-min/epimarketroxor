@@ -18,7 +18,7 @@ import com.epimarket.test.Auteur;
 @WebServlet("/Index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+        
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,7 +35,7 @@ public class Index extends HttpServlet {
 		response.getWriter().write("MIAM");
 		Auteur a = new Auteur();
 		a.setName("miam");
-		EMF.save(a);
+		EMF.persist(a);
 	}
 
 	/**

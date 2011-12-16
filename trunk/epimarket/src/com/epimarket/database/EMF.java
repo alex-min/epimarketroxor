@@ -10,7 +10,7 @@ import javax.persistence.*;
 public final class EMF
 {
 	private static final EntityManagerFactory emfInstance = Persistence.createEntityManagerFactory("librairie");
-	private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	private static final SessionFactory sessionFactory = new Configuration().configure("META-INF/hibernate.cfg.xml").buildSessionFactory();
 	private static  boolean sessionOpened = false;
 	private static  Session session = null;
 	
