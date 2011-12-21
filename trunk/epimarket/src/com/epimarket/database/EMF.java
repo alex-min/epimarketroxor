@@ -1,41 +1,53 @@
 package com.epimarket.database;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.Transaction;
+//import javax.persistence.*;
 
-import javax.persistence.*;
-
+import com.epimarket.hibernateconf.HibernateUtil;
 
 public final class EMF
 {
-	private static final EntityManagerFactory emfInstance = Persistence.createEntityManagerFactory("librairie");
-	private static final SessionFactory sessionFactory = new Configuration().configure("META-INF/hibernate.cfg.xml").buildSessionFactory();
-	private static  boolean sessionOpened = false;
-	private static  Session session = null;
-	
-    private EMF() {}
+	//private static final EntityManagerFactory emfInstance = Persistence.createEntityManagerFactory("librairie");
+	//private static final SessionFactory sessionFactory = new Configuration().configure("META-INF/hibernate.cfg.xml").buildSessionFactory();
+	private static  Session			session			= null;
+	private static	Transaction		tx				= null;
 
-    public static EntityManagerFactory get()
-    {
-        return emfInstance;
+	private EMF() {}
+	
+	public static Session getSession() {
+		return session;
+	}
+
+
+//    public static EntityManagerFactory get()
+//    {
+//      //  return emfInstance;
+//    }
+
+    static {
+    	session	= HibernateUtil.getMySessionFactory().openSession();
+    	tx		= session.beginTransaction(); 
     }
     
-    public static void persist(Object o) {
-		EntityManager em = EMF.get().createEntityManager();
-		em.getTransaction().begin();
-		em.persist(o);
-		em.getTransaction().commit();
-		em.close();
-    }
- 
-    public static void save(Object o) {
-		if (!sessionOpened)
-		{
-			session = sessionFactory.openSession();
-			sessionOpened = true;
+    public static void		save(Object o) {
+		try {
+			session.save(o);
+		} catch (RuntimeException e) {
+			EMF.rollBack();
 		}
-		session.save(o);
     }
+    
+    public static void		commit() {
+    	try {
+    		tx.commit();
+    	} catch (RuntimeException e) {
+    		EMF.rollBack();
+    	}
+    }
+    
+    public static void		rollBack() {
+    	tx.rollback();
+    }
+
 }
 
