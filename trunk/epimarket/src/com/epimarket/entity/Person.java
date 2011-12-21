@@ -9,9 +9,9 @@ import javax.persistence.Table;
 public class Person
 {
 	@Id
-	private int id;
-	private String firstName;
-	private String lastName;
+	private int			id;
+	private String		firstName;
+	private String		lastName;
 
 	public String toString()
 	{
