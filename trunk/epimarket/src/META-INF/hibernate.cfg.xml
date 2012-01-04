@@ -14,6 +14,8 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<mapping class="com.epimarket.entity.Person" />
+		<mapping class="com.epimarket.entity.Author"/>
+		<mapping class="com.epimarket.entity.Book"/>
 
 	</session-factory>
 </hibernate-configuration>

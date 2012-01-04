@@ -2,6 +2,7 @@ package com.epimarket.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,22 +11,21 @@ public class Book {
 	@Id
 	private	int		id;
 	private	String	title;
-	//private	String	author;
-	//private	String	editor;
+	@ManyToOne
+	private Author	author;
+	
 
-	public int getId() {
-		return id;
-	}
+	// getters
+	public int		getId() { return id; }
+	public String	getTitle() { return title; }
+	public Author	getAuthor() { return author; }
+	
+	// setters
+	public void setId(int id) { this.id = id; }
+	public void setTitle(String title) { this.title = title; }
+	public void setAuthor(Author author) { this.author = author; }
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
+	public String		toString() {
+		return "id:" + id + ", title:" + title + ", author:" + author.getFirstName() + " " + author.getLastName();
 	}
 }
