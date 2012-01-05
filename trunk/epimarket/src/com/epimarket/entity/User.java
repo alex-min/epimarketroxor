@@ -1,8 +1,21 @@
 package com.epimarket.entity;
 
+import org.hibernate.validator.constraints.Email;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="user")
 public class User {
+	@Id
+	private int			id;
 	private	String		login;
 	private String		password;
+
 	private	String		mail;
 	private	int			rights;
 	
@@ -18,6 +31,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Email
+	@NotNull
 	public String getMail() {
 		return mail;
 	}
@@ -29,5 +44,11 @@ public class User {
 	}
 	public void setRights(int rights) {
 		this.rights = rights;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

@@ -3,62 +3,66 @@ package com.epimarket.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.HibernateException;
+
 
 import com.epimarket.database.EMF;
 import com.epimarket.entity.Author;
 import com.epimarket.entity.Book;
+import com.epimarket.entity.Category;
 import com.epimarket.entity.Person;
-import com.epimarket.hibernateconf.HibernateUtil;
+import com.epimarket.entity.User;
 
 
 public class Main {
 
 	public static void main(String[] args) {
-		//SessionFactory sessionFactory = HibernateUtil.getMySessionFactory();
-
-		//Session session = sessionFactory.openSession();
-
-		//Transaction tx = session.beginTransaction();
 
 //		Person p = new Person();
 //
 //		p.setId(1);
 //		p.setFirstName("Gandalf");
 //		p.setLastName("The Grey");
-		
+		User	u = new User();
+		u.setLogin("Toto");
+		u.setMail("pd");
+
+		Category	c = new Category();
+		c.setName("Mouhahaha");
+
 		Author	a = new Author();
 		a.setId(1);
 		a.setFirstName("Miam");
 		a.setLastName("Plop");
-		
+
 		Book	b1 = new Book();
 		b1.setAuthor(a);
 		b1.setId(1);
+		b1.setCategory(c);
 		b1.setTitle("Glouglou");
 
 		List<Book> lBook = new ArrayList<Book>();
 		lBook.add(b1);
-		
+
 		a.setListBooks(lBook);
-		
+
 		try {
-			EMF.save(a);
-			EMF.save(b1);
+			//EMF.save(a);
+			//EMF.save(b1);
+			//EMF.save(c);
+			EMF.save(u);
 			EMF.commit();
-			//session.save(p);
-			//tx.commit();
 		} catch (RuntimeException e) {
 			EMF.rollBack();
-			//tx.rollback();
+		} catch (Exception e) {
+			System.out.println("groooooooossssss");
+			e.printStackTrace();
 		}
 
-		Object o = null;
-		o = EMF.getSession().get("com.epimarket.entity.Book", 1);
-
-		System.out.println(o.toString());
+//		Object o = null;
+//		o = EMF.getSession().get("com.epimarket.entity.Book", 1);
+//
+//		System.out.println(o.toString());
 	}
 
 }
