@@ -25,7 +25,8 @@ public class Main {
 //		p.setLastName("The Grey");
 		User	u = new User();
 		u.setLogin("Toto");
-		u.setMail("pd");
+		u.setMail("pdmiam.lol");
+		System.out.println("----------->" + u.getMail());
 
 		Category	c = new Category();
 		c.setName("Mouhahaha");
@@ -47,9 +48,9 @@ public class Main {
 		a.setListBooks(lBook);
 
 		try {
-			//EMF.save(a);
-			//EMF.save(b1);
-			//EMF.save(c);
+			EMF.save(a);
+			EMF.save(b1);
+			EMF.save(c);
 			EMF.save(u);
 			EMF.commit();
 		} catch (RuntimeException e) {
