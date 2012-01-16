@@ -11,6 +11,6 @@ System.out.println("===>" + indexVar);
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><%= indexVar %></title>
+<title>${webtitle}</title>
 </head>
 <body>

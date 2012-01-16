@@ -12,6 +12,7 @@
 <ul>
 	<c:if test="${ sessionScope.webData.getUser().isLogged() == false}">
 	<li><a href="/epimarket/app/login">Login</a></li>
+	<li><a href="/epimarket/app/register">Create Account</a></li>
 	</c:if>
 	
 	<li><a href="/epimarket/app/market">Market</a></li>

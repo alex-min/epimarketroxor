@@ -5,7 +5,6 @@
 
 <p> Test de page d'inscription </p>
 
-<form:form modelAttribute="commandForm"></form:form>
 
 <div>
 	<form action="/epimarket/app/registration" method="POST">
