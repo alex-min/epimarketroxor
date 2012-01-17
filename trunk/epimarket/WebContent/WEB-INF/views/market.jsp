@@ -8,6 +8,6 @@
 
 <jsp:include page="menu.jsp" />
 
-<a href="book&id=1">Le bouquin de fou !</a>
+
 
 <jsp:include page="footer.jsp" />
