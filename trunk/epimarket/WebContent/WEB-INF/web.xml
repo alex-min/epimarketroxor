@@ -7,7 +7,6 @@
 	<display-name>EpiMarket</display-name>
 	
 
-	
 
 	<servlet>
 		<servlet-name>app</servlet-name>
