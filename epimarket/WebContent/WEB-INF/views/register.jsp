@@ -7,9 +7,9 @@
 <p> Test de page d'inscription </p>
 
 
-<!--  
+
 <div>
-	<form:form method="POST" commandName="mowmow">
+	<form:form method="POST" action="registration" commandName="command">
 	<table>
 		<tr>
 			<td>Login</td>
@@ -18,10 +18,6 @@
 		<tr>
 			<td>Password</td>
 			<td><form:input path="password"/></td>
-		</tr>
-		<tr>
-			<td>Password (retype)</td>
-			<td><form:input path="password2"/></td>
 		</tr>
 		<tr>
 			<td>Age:</td>
@@ -39,4 +35,3 @@
 
 </div>
 
--->
