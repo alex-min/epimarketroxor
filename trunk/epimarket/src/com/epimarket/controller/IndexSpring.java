@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.epimarket.webdata.WD;
 
@@ -29,7 +30,8 @@ public class IndexSpring {
 	@RequestMapping(
 			value = "login",
 			method = RequestMethod.GET)
-	public String login(HttpServletRequest rqst, HttpServletResponse resp, Model model)
+	public String login(HttpServletRequest rqst, HttpServletResponse resp, Model model,
+			@RequestParam("lang") String ff)
 	{
 		System.out.println("Login page");
 		rqst.setAttribute("title", "Login");
