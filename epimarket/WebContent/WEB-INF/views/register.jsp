@@ -7,7 +7,6 @@
 <p> Test de page d'inscription </p>
 
 
-
 <div>
 	<form:form method="POST" action="registration" commandName="command">
 	<table>
@@ -17,12 +16,15 @@
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td><form:input path="password"/></td>
+			<td><form:input path="password"/>
+			<!--  add -->
+			</td>
 		</tr>
 		<tr>
-			<td>Age:</td>
-			<td>
+			<td>Email</td>
+			<td><form:input path="mail"/>
 			</td>
+			
 		</tr>
 		<tr>
 		<td>

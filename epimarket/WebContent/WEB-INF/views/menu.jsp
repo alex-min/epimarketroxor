@@ -6,19 +6,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fc" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
-		
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <jsp:include page="header.jsp" />
+
 
 <ul>
 	<c:if test="${ sessionScope.webData.getUser().isLogged() == false}">
-	<li><a href="/epimarket/app/login">Login</a></li>
-	<li><a href="/epimarket/app/register">Create Account</a></li>
+	<li><a href="/epimarket/app/login"><spring:message code="menu.login"/></a></li>
+	<li><a href="/epimarket/app/register"><spring:message code="menu.register"/></a></li>
 	</c:if>
 	
-	<li><a href="/epimarket/app/market">Market</a></li>
+	<li><a href="/epimarket/app/market"><spring:message code="menu.market"/></a></li>
 	
 	<c:if test="${ sessionScope.webData.getUser().isLogged() == false}">
-		<li><a href="/epimarket/app/market/cart">Cart</a></li>
+		<li><a href="/epimarket/app/market/cart"><spring:message code="menu.cart"/></a></li>
 	</c:if>
 
 </ul>
