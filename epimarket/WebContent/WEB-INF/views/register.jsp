@@ -7,6 +7,7 @@
 <p> Test de page d'inscription </p>
 
 
+<!--  
 <div>
 	<form:form method="POST" commandName="mowmow">
 	<table>
@@ -37,3 +38,5 @@
 
 
 </div>
+
+-->
