@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.epimarket.webdata.WD;
 
@@ -30,4 +31,12 @@ public class RegisterController {
 		rqst.setAttribute("title", "Register");
 		return "register";
 	}
+
+	@RequestMapping(value="registration",
+			method=RequestMethod.POST)
+	public ModelAndView signUpForm() {
+		System.out.println("Sign up");
+		return null;
+	}
+
 }

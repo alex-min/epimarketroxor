@@ -22,7 +22,6 @@
 		<servlet-name>app</servlet-name>
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
-	
 	<!--  Lang Fr_fr -->
 	<context-param>
     <param-name>webtitle</param-name>

@@ -15,7 +15,7 @@ public class MarketSpring {
 	@RequestMapping(
 			value = "",
 			method = RequestMethod.GET)
-	public String all(HttpServletRequest rqst, HttpServletResponse resp, Model model) 
+	public String all(HttpServletRequest rqst, HttpServletResponse resp, Model model)
 	{
 		System.out.println("Index with spring");
 		rqst.setAttribute("title", "Market");
@@ -24,10 +24,11 @@ public class MarketSpring {
 	@RequestMapping(
 			value = "cart",
 			method = RequestMethod.GET)
-	public String cart(HttpServletRequest rqst, HttpServletResponse resp, Model model) 
+	public String cart(HttpServletRequest rqst, HttpServletResponse resp, Model model)
 	{
 		System.out.println("cart Page");
 		rqst.setAttribute("title", "Cart");
 		return "cart";
 	}
+
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <jsp:include page="menu.jsp" />
 
@@ -7,34 +8,32 @@
 
 
 <div>
-	<form action="/epimarket/app/registration" method="POST">
-		<p>
-			<label for="LOGIN">Login : </label>
-			<input type="text" name="LOGIN" id="LOGIN"/>
-		</p>
-		<p>
-			<label for="PASSWORD">Password : </label>
-			<input type="password" name="PASSWORD" id="PASSWORD"/>
-		</p>
-		<p>
-			<label for="EMAIL">Email : </label>
-			<input type="text" name="EMAIL" id="EMAIL"/>
-		</p>
-		<p>
-			<label for="AGE">Age : </label>
-			<input type="text" name="AGE" id="AGE"/>
-		</p>
-		<p>
-			<?php echo "Sex : " ?>
-			
-			<input type="radio" name="SEXE" value="Homme" id="HOMME"/>
-			<label for="HOMME">Homme</label>
-			
-			<input type="radio" name="SEXE" value="Femme" id="FEMME"/>
-			<label for="FEMME">Femme</label>
-		</p>
-		<p>
+	<form:form method="POST" commandName="mowmow">
+	<table>
+		<tr>
+			<td>Login</td>
+			<td><form:input path="login"/></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><form:input path="password"/></td>
+		</tr>
+		<tr>
+			<td>Password (retype)</td>
+			<td><form:input path="password2"/></td>
+		</tr>
+		<tr>
+			<td>Age:</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+		<td>
 			<input class="submitform" type="submit" value="Inscription">
-		</p>
-	</form>
+		</td>
+		</tr>
+	</table>
+	</form:form>
+
+
 </div>
