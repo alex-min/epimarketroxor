@@ -37,10 +37,10 @@ public class RegisterController {
 		System.out.println("First Name:" + contact.getLogin() +
 				"Last Name:" + contact.getPassword());
 		if (result.hasErrors()) {
-			String errorOutput = "Registration failed : ";
+			String errorOutput = "Registration failed : </br>";
 			List<ObjectError> e = result.getAllErrors();
 			for (ObjectError a : e) {
-				errorOutput += a.getDefaultMessage() + "</br>";
+				errorOutput += a.getObjectName() + " : " + a.getDefaultMessage() + "</br>";
 			}
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 			HttpSession s = attr.getRequest().getSession(true); // true == allow create
