@@ -30,12 +30,9 @@ public class MarketController {
 				1);
 
 		Criteria crit = EMF.getSession().createCriteria(Book.class);
-
 		crit.add(Restrictions.between("id", pageBegin, pageEnd));
-
 		List<Book> list = crit.list();
-
-
+		rqst.setAttribute("books", list);
 		return ("market");
 	}
 
