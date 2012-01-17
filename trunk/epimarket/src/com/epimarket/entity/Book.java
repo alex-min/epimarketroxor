@@ -17,6 +17,8 @@ public class Book {
 	private Author		author;
 	@OneToOne
 	private Category	category;
+	private String		picture;
+
 
 	// getters
 	public int		getId() { return id; }
@@ -32,8 +34,15 @@ public class Book {
 	public void setAuthor(Author author) { this.author = author; }
 	public void setCategory(Category category) { this.category = category; }
 
+	@Override
 	public String		toString() {
 		return "id:" + id + ", title:" + title + ", author:" + author.getFirstName() + " " + author.getLastName();
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 }
