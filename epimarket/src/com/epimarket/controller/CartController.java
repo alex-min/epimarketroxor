@@ -1,6 +1,10 @@
 package com.epimarket.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +35,7 @@ public class CartController
 	{
 		System.out.println("cart Page");
 		rqst.setAttribute("title", "Cart");
-		
+
 		Criteria crit = EMF.getSession().createCriteria(Book.class);
 		System.out.println("size cart" + WD.getData().getUser().getCart().size());
 		if (WD.getData().getUser().getCart().size() > 0) {
@@ -42,7 +46,41 @@ public class CartController
 		}
 		return "cart";
 	}
-	
+
+	@RequestMapping(
+			value = "market/cart/checkout/",
+			method = RequestMethod.GET)
+	public String checkout(HttpServletRequest rqst, HttpServletResponse resp, Model model)
+	{
+		List<String>	lNotAvailable = new ArrayList<String>();
+		for (Integer idBook : WD.getData().getUser().getCart().keySet()) {
+			Book b = (Book) EMF.getSession().get(Book.class.getCanonicalName(), idBook);
+			if (b.getStock() < WD.getData().getUser().getCart().get(idBook))
+				lNotAvailable.add("Not enough stock for this item : " + b.getTitle());
+		}
+		rqst.setAttribute("lNotAvailable", lNotAvailable);
+		return "checkout";
+	}
+
+	@RequestMapping(
+			value = "market/cart/checkout/validation",
+			method = RequestMethod.GET)
+	public String checkoutValidation(HttpServletRequest rqst, HttpServletResponse resp, Model model)
+	{
+		try {
+			EMF.begin();
+			for (Integer idBook : WD.getData().getUser().getCart().keySet()) {
+				Book b = (Book) EMF.getSession().get(Book.class.getCanonicalName(), idBook);
+				b.setStock(b.getStock() - WD.getData().getUser().getCart().get(idBook));
+				EMF.save(b);
+			}
+			EMF.commit();
+		} catch (Exception e) {
+			EMF.rollBack();
+		}
+		return "checkoutValidation";
+	}
+
 	@RequestMapping(method=RequestMethod.GET, value="market/book/{id}/")
 	public String getBookInformation(Model model, @PathVariable("id") int id)
 	{
@@ -59,25 +97,23 @@ public class CartController
 		o = EMF.getSession().get("com.epimarket.entity.Book", id);
 		model.addAttribute("bookId", o);
 		model.addAttribute("added", true);
-		
+
 		WD.getData().getUser().addToCart(id);
-		
+
 		return "book";
 	}
-	
+
 	@RequestMapping(method=RequestMethod.GET, value="market/cart/removeOne/{id}")
 	public String removeOne(Model model, @PathVariable("id") int id)
 	{
 		WD.getData().getUser().removeOneFromCart(id);
-		
 		return "redirect:/app/market/cart/";
 	}
-	
+
 	@RequestMapping(method=RequestMethod.GET, value="market/cart/removeAll/{id}")
 	public String removeAll(Model model, @PathVariable("id") int id)
 	{
 		WD.getData().getUser().removeAllFromCart(id);
-		
 		return "redirect:/app/market/cart/";
 	}
 
