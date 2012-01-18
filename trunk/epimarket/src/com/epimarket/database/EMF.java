@@ -1,7 +1,6 @@
 package com.epimarket.database;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-//import javax.persistence.*;
 
 import com.epimarket.hibernateconf.HibernateUtil;
 
@@ -13,41 +12,44 @@ public final class EMF
 	private static	Transaction		tx				= null;
 
 	private EMF() {}
-	
+
 	public static Session getSession() {
 		return session;
 	}
 
 
-//    public static EntityManagerFactory get()
-//    {
-//      //  return emfInstance;
-//    }
+	//    public static EntityManagerFactory get()
+	//    {
+	//      //  return emfInstance;
+	//    }
 
-    static {
-    	session	= HibernateUtil.getMySessionFactory().openSession();
-    	tx		= session.beginTransaction(); 
-    }
-    
-    public static void		save(Object o) {
+	static {
+		session	= HibernateUtil.getMySessionFactory().openSession();
+	}
+
+	public static void		save(Object o) {
 		try {
 			session.save(o);
 		} catch (RuntimeException e) {
 			EMF.rollBack();
 		}
-    }
-    
-    public static void		commit() {
-    	try {
-    		tx.commit();
-    	} catch (RuntimeException e) {
-    		EMF.rollBack();
-    	}
-    }
-    
-    public static void		rollBack() {
-    	tx.rollback();
-    }
+	}
+
+	public static void		begin() {
+		tx = session.beginTransaction();
+	}
+
+	public static void		commit() {
+		try {
+			tx.commit();
+		} catch (RuntimeException e) {
+			EMF.rollBack();
+		}
+	}
+
+	public static void		rollBack() {
+		tx.rollback();
+	}
 
 }
 
