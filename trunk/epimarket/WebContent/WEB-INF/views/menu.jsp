@@ -21,7 +21,7 @@
 	
 	<c:if test="${ sessionScope.webData == null || 
 	sessionScope.webData.getUser().isLogged() == false}">
-		<li><a href="/epimarket/app/market/cart"><spring:message code="menu.cart"/></a></li>
+		<li><a href="/epimarket/app/market/cart/"><spring:message code="menu.cart"/></a></li>
 	</c:if>
 
 </ul>
