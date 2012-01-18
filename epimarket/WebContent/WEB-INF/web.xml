@@ -6,7 +6,10 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>EpiMarket</display-name>
 	
-
+ <context-param>
+    <param-name>rootdir</param-name>
+    <param-value>/epimarket</param-value>
+  </context-param>
 
 	<servlet>
 		<servlet-name>app</servlet-name>
@@ -19,8 +22,11 @@
 	<!--  Lang Fr_fr -->
 	<context-param>
     <param-name>webtitle</param-name>
+    
+   
     <param-value>Epimarket website</param-value>
   </context-param>
+  
   
 
 

@@ -16,8 +16,7 @@
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 	p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
 
-  	<mvc:annotation-driven />
-  	<mvc:resources mapping="/resources/**" location="/META-INF/resources/" /> 
+  	<mvc:annotation-driven/>
   
   <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>

@@ -25,12 +25,16 @@ public class MarketController {
 		int pageBegin = ServletRequestUtils.getIntParameter(rqst, "b", 0);
 		int pageEnd = ServletRequestUtils.getIntParameter(rqst, "e", 10);
 
+		System.out.println(EMF.class.getCanonicalName());
+
 		EMF.getSession().get(
 				Book.class.getCanonicalName(),
 				1);
 
+
 		Criteria crit = EMF.getSession().createCriteria(Book.class);
 		crit.add(Restrictions.between("id", pageBegin, pageEnd));
+		@SuppressWarnings("unchecked")
 		List<Book> list = crit.list();
 		rqst.setAttribute("books", list);
 		return ("market");

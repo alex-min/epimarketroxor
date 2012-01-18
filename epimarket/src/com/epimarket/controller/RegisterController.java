@@ -16,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.epimarket.database.EMF;
 import com.epimarket.entity.User;
 
 @Controller
@@ -36,19 +37,33 @@ public class RegisterController {
 	@Valid User contact, BindingResult result, ModelMap m) {
 		System.out.println("First Name:" + contact.getLogin() +
 				"Last Name:" + contact.getPassword());
+		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		HttpSession s = attr.getRequest().getSession(true); // true == allow create
 		if (result.hasErrors()) {
 			String errorOutput = "Registration failed : </br>";
 			List<ObjectError> e = result.getAllErrors();
 			for (ObjectError a : e) {
 				errorOutput += a.getObjectName() + " : " + a.getDefaultMessage() + "</br>";
 			}
-			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-			HttpSession s = attr.getRequest().getSession(true); // true == allow create
-
 			s.setAttribute("lasterror", errorOutput);
 			return "redirect:processerror";
 		}
+		try {
+			EMF.begin();
+			EMF.save(contact);
+			EMF.commit();
+		}
+		catch (Exception e) {
+			s.setAttribute("lasterror", e.getMessage());
+			return "redirect:processerror";
+		}
 		return "redirect:login";
+	}
+
+
+	private void rollBack() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

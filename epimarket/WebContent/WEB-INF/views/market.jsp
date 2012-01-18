@@ -11,6 +11,7 @@
 
 <table>
 <tr>
+<th><spring:message code="market.table.cover_picture"/></th>
 <th><spring:message code="market.table.book_id"/></th>
 <th><spring:message code="market.table.title"/></th>
 <th><spring:message code="market.table.stock"/></th>
@@ -20,7 +21,7 @@
 <td>
 	<c:choose>
 	<c:when test="${current.picture != null && current.picture}"></c:when>
-	<c:otherwise><img src="/resources/empty-book.jpg" /></c:otherwise>
+	<c:otherwise><img src="/epimarket/resources/empty-book.jpg" /></c:otherwise>
 	</c:choose>
 </td>
 <td>${current.id }</td>
