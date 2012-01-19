@@ -33,6 +33,7 @@ public class CartController
 			method = RequestMethod.GET)
 	public String cart(HttpServletRequest rqst, HttpServletResponse resp, Model model)
 	{
+		WD.getData().getUser().setCheckoutAvailable(false);
 		System.out.println("cart Page");
 		rqst.setAttribute("title", "Cart");
 
@@ -52,13 +53,18 @@ public class CartController
 			method = RequestMethod.GET)
 	public String checkout(HttpServletRequest rqst, HttpServletResponse resp, Model model)
 	{
+		if (WD.getData().getUser().getCart().isEmpty() == true)
+			return "redirect:/app/market/cart/";
+		WD.getData().getUser().setCheckoutAvailable(false);
 		List<String>	lNotAvailable = new ArrayList<String>();
 		for (Integer idBook : WD.getData().getUser().getCart().keySet()) {
 			Book b = (Book) EMF.getSession().get(Book.class.getCanonicalName(), idBook);
 			if (b.getStock() < WD.getData().getUser().getCart().get(idBook))
-				lNotAvailable.add("Not enough stock for this item : " + b.getTitle());
+				lNotAvailable.add(b.getTitle());
 		}
 		rqst.setAttribute("lNotAvailable", lNotAvailable);
+		if (lNotAvailable.isEmpty() == true)
+			WD.getData().getUser().setCheckoutAvailable(true);
 		return "checkout";
 	}
 
@@ -67,6 +73,8 @@ public class CartController
 			method = RequestMethod.GET)
 	public String checkoutValidation(HttpServletRequest rqst, HttpServletResponse resp, Model model)
 	{
+		if (WD.getData().getUser().isCheckoutAvailable() == false)
+			return "redirect:/app/market/cart/checkout/";
 		try {
 			EMF.begin();
 			for (Integer idBook : WD.getData().getUser().getCart().keySet()) {
@@ -77,7 +85,10 @@ public class CartController
 			EMF.commit();
 		} catch (Exception e) {
 			EMF.rollBack();
+			return "errorCheckout";
 		}
+		WD.getData().getUser().setCheckoutAvailable(false);
+		WD.getData().getUser().getCart().clear();
 		return "checkoutValidation";
 	}
 

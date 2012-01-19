@@ -8,18 +8,26 @@ import org.hibernate.mapping.Map;
 
 public class WebUser {
 	boolean			logged = false;
+	boolean			checkoutAvailable = false;
 	java.util.Map<Integer, Integer> cart = new HashMap<Integer, Integer>();//<Integer>	cart = new //ArrayList<Integer>();
 
 	public boolean		isLogged() {
 		return logged;
 	}
+	public boolean		isCheckoutAvailable() {
+		return checkoutAvailable;
+	}
 
+	public void			setCheckoutAvailable(boolean checkoutAvailable) {
+		this.checkoutAvailable = checkoutAvailable;
+	}
+	
 	public void			setLogged(boolean logged) {
 		this.logged = logged;
 	}
 
 	public void			addToCart(Integer id) {
-		//cart.add(id);
+		checkoutAvailable = false;
 		if (cart.containsKey(id) == true)
 			cart.put(id, cart.get(id) + 1);
 		else
@@ -27,6 +35,7 @@ public class WebUser {
 	}
 	
 	public Boolean			removeOneFromCart(Integer id) {
+		checkoutAvailable = false;
 		Boolean ret = false;
 		if (cart.containsKey(id) == true) {
 			cart.put(id, cart.get(id) - 1);
@@ -38,6 +47,7 @@ public class WebUser {
 	}
 	
 	public Boolean			removeAllFromCart(Integer id) {
+		checkoutAvailable = false;
 		return (cart.remove(id) != null);
 	}
 	
