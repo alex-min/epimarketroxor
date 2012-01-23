@@ -18,7 +18,7 @@ public class Book {
 	@OneToOne
 	private Category	category;
 	private String		picture;
-
+	private double		price;
 
 	// getters
 	public int		getId() { return id; }
@@ -26,6 +26,8 @@ public class Book {
 	public int		getStock() { return stock; }
 	public Author	getAuthor() { return author; }
 	public Category	getCategory() { return category; }
+	public String getPicture() { return picture; }
+	public double getPrice() { return price; }
 
 	// setters
 	public void setId(int id) { this.id = id; }
@@ -33,16 +35,12 @@ public class Book {
 	public void setStock(int stock) { this.stock = stock; }
 	public void setAuthor(Author author) { this.author = author; }
 	public void setCategory(Category category) { this.category = category; }
+	public void setPicture(String picture) { this.picture = picture; }
+	public void setPrice(double price) { this.price = price; }
 
 	@Override
 	public String		toString() {
 		return "id:" + id + ", title:" + title + ", author:" + author.getFirstName() + " " + author.getLastName();
-	}
-	public String getPicture() {
-		return picture;
-	}
-	public void setPicture(String picture) {
-		this.picture = picture;
 	}
 
 }

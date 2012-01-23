@@ -18,6 +18,7 @@
 		<mapping class="com.epimarket.entity.Book"/>
 		<mapping class="com.epimarket.entity.Category"/>
 		<mapping class="com.epimarket.entity.User"/>
+		<mapping class="com.epimarket.entity.Purchase"/>
 
 	</session-factory>
 </hibernate-configuration>

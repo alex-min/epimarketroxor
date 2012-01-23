@@ -1,10 +1,14 @@
 package com.epimarket.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -27,38 +31,26 @@ public class User {
 
 	@Email
 	@NotNull
-	private	String		mail;
-	private	int			rights;
+	private	String			mail;
+	private	int				rights;
+	@OneToMany
+	private List<Purchase>	commands = new ArrayList<Purchase>();
 
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getMail() {
-		return mail;
-	}
+	public Integer			getId() { return id; }
+	public String			getLogin() { return login; }
+	public String			getMail() { return mail; }
+	public String			getPassword() { return password; }
+	public int				getRights() { return rights; }
+	public List<Purchase>	getCommands() { return commands; }
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-	public int getRights() {
-		return rights;
-	}
-	public void setRights(int rights) {
-		this.rights = rights;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setLogin(String login) { this.login = login; }
+	public void setPassword(String password) { this.password = password; }
+	public void setMail(String mail) { this.mail = mail; }
+	public void setRights(int rights) { this.rights = rights; }
+	public void setId(Integer id) { this.id = id; }
+	public void setCommands(List<Purchase> commands) { this.commands = commands; }
+	
+	public void	addPurchase(Purchase p) {
+		commands.add(p);
 	}
 }
