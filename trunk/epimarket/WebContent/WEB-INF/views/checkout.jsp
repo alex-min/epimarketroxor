@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+	
 
 <jsp:include page="menu.jsp" />
 
@@ -27,6 +28,9 @@
 	</c:if>
 
 	<c:if test="${lNotAvailable == null || lNotAvailable.isEmpty() == true }">
+		Total de votre commande :
+		<f:formatNumber type="number" pattern="#.##" value="${fullPrice}" />
+		<br />
 		<a href="validation">Cliquez ici pour valider votre commande</a>
 	</c:if>
 </p>
