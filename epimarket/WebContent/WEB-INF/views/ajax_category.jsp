@@ -6,4 +6,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<c:forEach items="${authors }" var="author">${author.firstName } ${author.lastName }|${author.id }</c:forEach>
+<c:forEach items="${categorylist }" var="cat">${cat.name }|${cat.id }</c:forEach>
