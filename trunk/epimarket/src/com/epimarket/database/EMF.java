@@ -1,6 +1,10 @@
 package com.epimarket.database;
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.epimarket.hibernateconf.HibernateUtil;
 
@@ -12,6 +16,12 @@ public final class EMF
 	private static	Transaction		tx				= null;
 
 	private EMF() {}
+
+	public static HttpSession getHttpSession() {
+		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		HttpSession s = attr.getRequest().getSession(true); // true == allow create
+		return (s);
+	}
 
 	public static Session getSession() {
 		return session;

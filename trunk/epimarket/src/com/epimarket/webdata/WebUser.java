@@ -1,28 +1,39 @@
 package com.epimarket.webdata;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import org.hibernate.mapping.Map;
 
 import com.epimarket.entity.User;
 
 public class WebUser {
+	public static final int ADMIN = 3;
 	User			user = null;
 	boolean			logged = false;
 	boolean			checkoutAvailable = false;
 	java.util.Map<Integer, Integer> cart = new HashMap<Integer, Integer>();//<Integer>	cart = new //ArrayList<Integer>();
 
+
+	int				right = 0;
+
+	public int getRight() {
+		return right;
+	}
+
+	public void setRight(int right) {
+		this.right = right;
+	}
+
+
+
+
 	public boolean		isLogged() { return logged; }
 	public boolean		isCheckoutAvailable() { return checkoutAvailable; }
 	public User			getUser() { return user; }
 
-	public void			setUser(User user) { this.user = user; }
+	public void			setUser(User user) { user = user; }
 	public void			setCheckoutAvailable(boolean checkoutAvailable) {
-		this.checkoutAvailable = checkoutAvailable;
+		checkoutAvailable = checkoutAvailable;
 	}
-	public void			setLogged(boolean logged) { this.logged = logged; }
+	public void			setLogged(boolean logged) { logged = logged; }
 
 	public void			addToCart(Integer id) {
 		checkoutAvailable = false;
@@ -31,7 +42,7 @@ public class WebUser {
 		else
 			cart.put(id, 1);
 	}
-	
+
 	public Boolean			removeOneFromCart(Integer id) {
 		checkoutAvailable = false;
 		Boolean ret = false;
@@ -43,12 +54,12 @@ public class WebUser {
 			cart.remove(id);
 		return ret;
 	}
-	
+
 	public Boolean			removeAllFromCart(Integer id) {
 		checkoutAvailable = false;
 		return (cart.remove(id) != null);
 	}
-	
+
 	public java.util.Map<Integer, Integer>	getCart() {
 		return cart;
 	}
