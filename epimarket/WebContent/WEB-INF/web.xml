@@ -11,6 +11,21 @@
   </context-param>
 
 	<servlet>
+		<servlet-name>backoffice</servlet-name>
+		<servlet-class>com.vaadin.terminal.gwt.server.ApplicationServlet</servlet-class>
+		<init-param>
+			<description>
+			Vaadin application class to start</description>
+			<param-name>application</param-name>
+			<param-value>com.epimarket.backoffice.VaadinTest</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>backoffice</servlet-name>
+		<url-pattern>/backoffice/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>app</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
@@ -25,6 +40,10 @@
    
     <param-value>Epimarket website</param-value>
   </context-param>
+  
+  
+
+  
   
   
 
