@@ -41,6 +41,7 @@ public class Main {
 		b1.setId(1);
 		b1.setCategory(c);
 		b1.setTitle("Glouglou");
+		b1.setStock(5);
 
 		List<Book> lBook = new ArrayList<Book>();
 		lBook.add(b1);
@@ -48,11 +49,22 @@ public class Main {
 		a.setListBooks(lBook);
 
 		try {
+			EMF.begin();
 			EMF.save(a);
 			EMF.save(b1);
 			EMF.save(c);
-			EMF.save(u);
+			
 			EMF.commit();
+		} catch (RuntimeException e) {
+			EMF.rollBack();
+		} catch (Exception e) {
+			System.out.println("groooooooossssss");
+			e.printStackTrace();
+		}
+		
+		try {
+			EMF.begin();
+			EMF.save(u);
 		} catch (RuntimeException e) {
 			EMF.rollBack();
 		} catch (Exception e) {

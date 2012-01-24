@@ -31,7 +31,7 @@ public class WebUser {
 
 	public void			setUser(User user) { user = user; }
 	public void			setCheckoutAvailable(boolean checkoutAvailable) {
-		checkoutAvailable = checkoutAvailable;
+		this.checkoutAvailable = checkoutAvailable;
 	}
 	public void			setLogged(boolean logged) { logged = logged; }
 
