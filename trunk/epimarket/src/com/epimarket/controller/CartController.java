@@ -1,5 +1,6 @@
 package com.epimarket.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.epimarket.database.EMF;
 import com.epimarket.entity.Book;
+import com.epimarket.entity.Purchase;
 import com.epimarket.webdata.WD;
 
 
@@ -38,6 +40,64 @@ public class CartController
 			rqst.setAttribute("cartMap", WD.getData().getUser().getCart());
 		}
 		return "cart";
+	}
+	
+	@RequestMapping(
+			value = "market/cart/checkout/",
+			method = RequestMethod.GET)
+	public String checkout(HttpServletRequest rqst, HttpServletResponse resp, Model model)
+	{
+		double	fullPrice = 0;
+		if (WD.getData().getUser().getCart().isEmpty() == true)
+			return "redirect:/app/market/cart/";
+		WD.getData().getUser().setCheckoutAvailable(false);
+		List<String>	lNotAvailable = new ArrayList<String>();
+		for (Integer idBook : WD.getData().getUser().getCart().keySet()) {
+			Book b = (Book) EMF.getSession().get(Book.class.getCanonicalName(), idBook);
+			fullPrice += (b.getPrice() * WD.getData().getUser().getCart().get(idBook));
+			if (b.getStock() < WD.getData().getUser().getCart().get(idBook))
+				lNotAvailable.add(b.getTitle());
+		}
+		rqst.setAttribute("fullPrice", fullPrice);
+		rqst.setAttribute("lNotAvailable", lNotAvailable);
+		if (lNotAvailable.isEmpty() == true) {
+			System.out.println("GRRRRRRRRROOOOOOOOOOOOSSSSSS");
+			WD.getData().getUser().setCheckoutAvailable(true);
+		}
+		return "checkout";
+	}
+	
+	@RequestMapping(
+			value = "market/cart/checkout/validation",
+			method = RequestMethod.GET)
+	public String checkoutValidation(HttpServletRequest rqst, HttpServletResponse resp, Model model)
+	{
+		Purchase	command = new Purchase();
+
+		if (WD.getData().getUser().isCheckoutAvailable() == false) {
+			System.out.println("PPPPPPPPPDDDDDDDDDDD");
+			return "redirect:/app/market/cart/checkout/";
+		}
+		try {
+			EMF.begin();
+			for (Integer idBook : WD.getData().getUser().getCart().keySet()) {
+				Book b = (Book) EMF.getSession().get(Book.class.getCanonicalName(), idBook);
+				b.setStock(b.getStock() - WD.getData().getUser().getCart().get(idBook));
+				EMF.update(b);
+				for (int i = 0; i < WD.getData().getUser().getCart().get(idBook); ++i)
+					command.addBook(b);
+			}
+			//WD.getData().getUser().getUser().addPurchase(command);
+			EMF.save(command);
+			//EMF.save(WD.getData().getUser().getUser());
+			EMF.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "errorCheckout";
+		}
+		WD.getData().getUser().setCheckoutAvailable(false);
+		WD.getData().getUser().getCart().clear();
+		return "checkoutValidation";
 	}
 
 	@RequestMapping(method=RequestMethod.GET, value="market/book/{id}/")

@@ -35,6 +35,7 @@ public final class EMF
 
 	static {
 		session	= HibernateUtil.getMySessionFactory().openSession();
+		tx = session.beginTransaction();
 	}
 
 	public static void		save(Object o) {
@@ -44,16 +45,24 @@ public final class EMF
 			EMF.rollBack();
 		}
 	}
+	
+	public static void		update(Object o) {
+		try {
+			session.update(o);
+		} catch (RuntimeException e) {
+			EMF.rollBack();
+		}
+	}
 
 	public static void		begin() {
-		tx = session.beginTransaction();
+//		tx = session.beginTransaction();
 	}
 
 	public static void		commit() {
 		try {
 			tx.commit();
 		} catch (RuntimeException e) {
-			EMF.rollBack();
+			//EMF.rollBack();
 		}
 	}
 
