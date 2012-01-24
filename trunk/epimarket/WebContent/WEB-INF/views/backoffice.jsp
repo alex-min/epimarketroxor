@@ -10,8 +10,9 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<div>
-<p>User management</p>
+<h1>Book Management</h1>
+<div style="border: 1px solid">
+<p>Book List</p>
 <table>
 	<tr>
 		<th><spring:message code="market.table.cover_picture"/></th>
@@ -37,12 +38,32 @@
 	</c:forEach>	
 </table>
 </div>
-<div>
-	<form:form method="POST" action="bookaddaction" commandName="bookadd">
-	<form:input path="picture"/>
-	<form:input path="stock"/>
-	<form:input path="title"/>
-	<form:input path="author"/>
-	<input class="submitform" type="submit" value="Inscription">
-	</form:form>
+<div style="border: 1px solid">
+	<p>Add book</p>
+	<table>
+		<tr>
+			<th><spring:message code="market.table.cover_picture"/></th>
+			<th><spring:message code="market.table.stock"/></th>
+			<th><spring:message code="market.table.title"/></th>
+			<th>Author</th>
+			<th>Category</th>
+		</tr>
+		<tr>
+			<form:form method="POST" action="bookaddaction" commandName="bookadd">
+			<td><form:input id="pictureautocomplete" class="ac_input" path="picture"/></td>
+			<td><form:input path="stock"/></td>
+			<td><form:input path="title"/></td>
+			<td><form:input path="author" id="authorautocomplete" class="ac_input"/></td>
+			<td><form:input path="category" id="categoryautocomplete" class="ac_input"/></td>
+			<td><input class="submitform" type="submit" value="Add Book"></td>
+			</form:form>
+		</tr>
+	</table>
 </div>
+<script type="text/javascript" src="/epimarket/js/autocomplete.js"></script>
+<script type="text/javascript">
+AddCompletion("category");
+AddCompletion("author");
+AddCompletion("picture");
+</script>
+

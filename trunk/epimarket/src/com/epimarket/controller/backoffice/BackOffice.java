@@ -90,6 +90,7 @@ public class BackOffice {
 			method=RequestMethod.POST)
 	public String addContact(@ModelAttribute("book")
 	@Valid Book book, BindingResult result, ModelMap m) {
-		return "redirect:/app/admin/";
+
+		return "redirect:/app/admin/book/";
 	}
 }
