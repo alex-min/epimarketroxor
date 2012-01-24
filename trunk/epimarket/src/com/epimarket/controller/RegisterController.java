@@ -43,10 +43,10 @@ public class RegisterController {
 			String errorOutput = "Registration failed : </br>";
 			List<ObjectError> e = result.getAllErrors();
 			for (ObjectError a : e) {
-				errorOutput += a.getObjectName() + " : " + a.getDefaultMessage() + "</br>";
+				errorOutput += a.getObjectName() + " : " + a.getDefaultMessage() + "\n";
 			}
-			s.setAttribute("lasterror", errorOutput);
-			return "redirect:processerror";
+			System.out.println(errorOutput);
+			return "processerror";
 		}
 		try {
 			EMF.begin();
@@ -54,6 +54,7 @@ public class RegisterController {
 			EMF.commit();
 		}
 		catch (Exception e) {
+			System.out.println(e.getMessage());
 			s.setAttribute("lasterror", e.getMessage());
 			return "redirect:processerror";
 		}

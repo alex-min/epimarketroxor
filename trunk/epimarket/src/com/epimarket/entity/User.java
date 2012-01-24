@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -49,7 +48,7 @@ public class User {
 	public void setRights(int rights) { this.rights = rights; }
 	public void setId(Integer id) { this.id = id; }
 	public void setCommands(List<Purchase> commands) { this.commands = commands; }
-	
+
 	public void	addPurchase(Purchase p) {
 		commands.add(p);
 	}
