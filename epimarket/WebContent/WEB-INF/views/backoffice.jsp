@@ -53,8 +53,8 @@
 			<td><form:input id="pictureautocomplete" class="ac_input" path="picture"/></td>
 			<td><form:input path="stock"/></td>
 			<td><form:input path="title"/></td>
-			<td><form:input path="author" id="authorautocomplete" class="ac_input"/></td>
-			<td><form:input path="category" id="categoryautocomplete" class="ac_input"/></td>
+			<td><form:input path="author.id" id="authorautocomplete" class="ac_input"/></td>
+			<td><form:input path="category.id" id="categoryautocomplete" class="ac_input"/></td>
 			<td><input class="submitform" type="submit" value="Add Book"></td>
 			</form:form>
 		</tr>

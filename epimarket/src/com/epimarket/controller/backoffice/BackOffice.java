@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,15 +54,16 @@ public class BackOffice {
 
 
 	@RequestMapping(
-			value = "admin/delete/{id}/",
+			value = "admin/book/delete/{id}/",
 			method = RequestMethod.GET)
 	public String addToCart(Model model, @PathVariable("id") int id)
 	{
-		if (WD.getData().getUser().getRight() != WebUser.ADMIN)
+		// TODO : uncomment
+		/* if ((WD.getData().getUser().getRight() != WebUser.ADMIN))
 		{
 			EMF.getHttpSession().setAttribute("lasterror", "Access Denied");
 			return "processerror";
-		}
+		} */
 
 		Criteria c = EMF.getSession().createCriteria(Book.class);
 		c.add(Restrictions.eq("id", id));
@@ -76,7 +78,7 @@ public class BackOffice {
 			} catch (Exception e) {}
 		} else
 			System.err.println( "book is null");
-		return "redirect:/app/admin";
+		return "redirect:/app/admin/book/";
 	}
 
 	@RequestMapping(
@@ -90,6 +92,25 @@ public class BackOffice {
 			method=RequestMethod.POST)
 	public String addContact(@ModelAttribute("book")
 	@Valid Book book, BindingResult result, ModelMap m) {
+		System.out.println(book.getAuthor());
+		if (result.hasErrors()) {
+			String errorOutput = "Registration failed : </br>";
+			List<ObjectError> e = result.getAllErrors();
+			for (ObjectError a : e) {
+				errorOutput += a.getObjectName() + " : " + a.getDefaultMessage() + "</br>";
+			}
+			System.out.println(errorOutput);
+			m.addAttribute("lasterror", errorOutput);
+			return "redirect:processerror";
+		}
+		try {
+			EMF.begin();
+			EMF.save(book);
+			EMF.commit();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			m.addAttribute("error", e.getMessage());
+		}
 
 		return "redirect:/app/admin/book/";
 	}

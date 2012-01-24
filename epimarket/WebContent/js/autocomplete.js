@@ -38,7 +38,7 @@ function findValue(li) {
       "/epimarket/app/ajax/" + completion,
       {
   			delay:10,
-  			minChars:2,
+  			minChars:1,
   			matchSubset:1,
   			matchContains:1,
   			cacheLength:10,

@@ -45,7 +45,7 @@ public final class EMF
 			EMF.rollBack();
 		}
 	}
-	
+
 	public static void		update(Object o) {
 		try {
 			session.update(o);
@@ -55,14 +55,17 @@ public final class EMF
 	}
 
 	public static void		begin() {
-//		tx = session.beginTransaction();
+		//		tx = session.beginTransaction();
 	}
 
 	public static void		commit() {
+
 		try {
 			tx.commit();
+			session.close();
+			session	= HibernateUtil.getMySessionFactory().openSession();
 		} catch (RuntimeException e) {
-			//EMF.rollBack();
+
 		}
 	}
 
