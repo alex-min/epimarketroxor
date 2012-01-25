@@ -18,7 +18,7 @@
 	<tr>
 		<th ><spring:message code="user.id"/></th>
 		<th abbr="login"><spring:message code="user.login"/></th>
-		<th abbr="email"><spring:message code="user.email"/></th>
+		<th abbr="mail"><spring:message code="user.email"/></th>
 		<th abbr="rights"><spring:message code="user.rights"/></th>
 	</tr>
 	<c:forEach items="${users }" var="current">
