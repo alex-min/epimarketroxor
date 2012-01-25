@@ -66,19 +66,18 @@ public class UserBackOffice {
 			return "processerror";
 		} */
 
-		Criteria c = EMF.getSession().createCriteria(Book.class);
+		Criteria c = EMF.getSession().createCriteria(User.class);
 		c.add(Restrictions.eq("id", id));
-		Book b = (Book) c.uniqueResult();
+		User b = (User) c.uniqueResult();
 		if (b != null)
 		{
-			System.err.println( "book is not null : " + b.getAuthor().getFirstName());
 			try {
 				EMF.begin();
 				EMF.getSession().delete(b);
 				EMF.commit();
 			} catch (Exception e) {}
-		} else
-			System.err.println( "book is null");
+		}
+		System.out.println("HERE !!");
 		return "redirect:/app/admin/user/";
 	}
 
