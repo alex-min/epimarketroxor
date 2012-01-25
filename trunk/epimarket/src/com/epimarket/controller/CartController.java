@@ -41,7 +41,7 @@ public class CartController
 		}
 		return "cart";
 	}
-	
+
 	@RequestMapping(
 			value = "market/cart/checkout/",
 			method = RequestMethod.GET)
@@ -66,7 +66,7 @@ public class CartController
 		}
 		return "checkout";
 	}
-	
+
 	@RequestMapping(
 			value = "market/cart/checkout/validation",
 			method = RequestMethod.GET)

@@ -1,32 +1,7 @@
 package com.epimarket.controller;
 
-import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.epimarket.database.EMF;
-import com.epimarket.entity.Purchase;
-import com.epimarket.webdata.WD;
-
-
+/*
 
 @Controller
 @RequestMapping("stat")
@@ -41,7 +16,7 @@ public class StatisticController
 		DefaultPieDataset		pieDataSet = new DefaultPieDataset();
 
 		GregorianCalendar cal = new GregorianCalendar();
-		
+
 		cal.roll(Calendar.DAY_OF_WEEK, 1);
 		Date	end	= cal.getTime();
 		cal.add(Calendar.MONTH, -6);
@@ -104,4 +79,4 @@ public class StatisticController
 	{
 		return "displayStat";
 	}
-}
+}*/

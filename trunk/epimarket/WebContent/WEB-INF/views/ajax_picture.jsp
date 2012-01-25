@@ -6,4 +6,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<c:forEach items="${pictures }" var="pic">${pic.picture}|${pic.id }</c:forEach>
+<c:forEach items="${pictures }" var="pic">
+${pic.picture}|${pic.id }
+</c:forEach>
