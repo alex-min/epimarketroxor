@@ -10,6 +10,7 @@
 <script type="text/javascript" src="/epimarket/js/jquery.js"></script>
 <script type="text/javascript" src="/epimarket/js/jquery.autocomplete.js"></script>
 <link rel="stylesheet" href="/epimarket/style/jquery.autocomplete.css" type="text/css" />
+<link rel="stylesheet" href="/epimarket/style/style.css" type="text/css" />
 	
 <title>${webtitle}</title>
 </head>

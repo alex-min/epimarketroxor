@@ -1,7 +1,6 @@
 $("form").submit(function (a) {
-		var inputs = $("input");
+		var inputs = $(".post");
 		for (var i = 0; i < inputs.length; ++i) {
-			console.log($(inputs[i]));
 			if ($(inputs[i]).hasClass('ac_input')) {
 				$(inputs[i]).val($(inputs[i]).attr("dbid"));
 				//$(inputs[i]).css({color: "#ffffff"});
@@ -9,7 +8,67 @@ $("form").submit(function (a) {
 			}
 		}
 });
+
+function postThis( obj ) {
+	if (obj == undefined || obj.length == 0) return ;
+	$(".onselect").each(function () {$(this).removeClass("onselect");});
+	obj.removeClass("onselect");
+	obj.html($("#shadowtext").val());
+	obj.css({"visibility" : "visible"});
+	var parentTd = obj.parent("td");
+	var tdPlace = parentTd.parent().children().index(parentTd[0]);
+	var thPlace = $(obj.parents("table").children()[0]).find("th")[tdPlace];
+	var tableName = $(obj).parents("table").attr("abbr");
+	var fieldName = $(thPlace).attr("abbr");
+	var id = $($(obj.parents("tr")).children()[0]).children()[0].innerHTML;
+	$("#shadowtext").css({"visibility" : "hidden"});
+	$.post("/epimarket/app/ajax/change/" + tableName + "/"
+			+ fieldName + "/" +
+			id
+			,
+			obj.html()
+	);
+	if (obj.hasClass("replacenext")) {
+		$(obj.parents("td").next().children()[0]).html(obj.html());
+		autoreplaceall();
+	}
+	
+}
+
+var autoreplaceall = undefined;
+var replacecontent = undefined;
 $(document).ready(function () {
+	$(".editable").click(function () {
+			if ($("#shadowinput").length == 0) {
+				$('body').append('<div id="shadowinput"> \
+						<input id="shadowtext"/>\
+						</div>');
+			} else {
+				$(".onselect").each(function () {
+					postThis($(this));
+				});
+			}
+			$("#shadowtext").val($(this).html());
+			$(this).css({"visibility" : "hidden"});
+			$(this).addClass("onselect");
+			$("#shadowtext").css({
+				"visibility" : "visible",
+				"position" : "fixed",
+				"top" : $(this).position().top + "px",
+				"left" : $(this).position().left + "px",
+				"width" : $(this).width(),
+				"height" : $(this).height()
+			});
+			$("#shadowtext").keypress(function (event) {
+				if (event.which == 13) {
+					postThis($($(".onselect")[0]));
+				}
+			});
+			
+		}
+	);
+	
+	
 	function parseData(data) {
 		if (!data) return null;
 		var parsed = [];
@@ -32,6 +91,8 @@ for (var i = 0; i < ar[replaceType].length; ++i) {
 	}
 }
 }
+replacecontent == replaceContent;
+function autoreplace() {
 $(".autoreplace").each(function () {
 	var obj = this;
 	replaceType = $(this).attr("abbr");
@@ -50,5 +111,7 @@ $(".autoreplace").each(function () {
 	}
 	
 });
-
+} autoreplaceall = autoreplace;
+autoreplaceall();
 });
+
