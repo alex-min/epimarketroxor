@@ -72,12 +72,9 @@ public class UserBackOffice {
 		if (b != null)
 		{
 			try {
-				EMF.begin();
 				EMF.getSession().delete(b);
-				EMF.commit();
 			} catch (Exception e) {}
-		}
-		System.out.println("HERE !!");
+		} else { System.out.println("Uset is null"); }
 		return "redirect:/app/admin/user/";
 	}
 
@@ -100,7 +97,6 @@ public class UserBackOffice {
 			for (ObjectError a : e) {
 				errorOutput += a.getObjectName() + " : " + a.getDefaultMessage() + "</br>";
 			}
-			System.out.println(errorOutput);
 			EMF.getHttpSession().setAttribute("lasterror", errorOutput);
 			return "redirect:/app/admin/user/";
 		}
@@ -109,7 +105,6 @@ public class UserBackOffice {
 			EMF.save(user);
 			EMF.commit();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			m.addAttribute("error", e.getMessage());
 		}
 		return "redirect:/app/admin/user/";
