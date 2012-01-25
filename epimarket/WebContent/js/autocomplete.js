@@ -1,4 +1,4 @@
-function AddCompletion (completion) {
+function AddCompletion (completion, autofill, minChar) {
 function findValue(li) {
   	if( li == null ) return alert("No match!");
 
@@ -38,17 +38,18 @@ function findValue(li) {
       "/epimarket/app/ajax/" + completion,
       {
   			delay:10,
-  			minChars:1,
+  			minChars:minChar,
   			matchSubset:1,
   			matchContains:1,
   			cacheLength:10,
   			onItemSelect:selectItem,
   			onFindValue:findValue,
   			formatItem:formatItem,
-  			autoFill:true,
+  			autoFill:autofill,
   			onItemSelect: function (li) {
+  				console.log("{{SelectedId : " + $(li).attr("selectionid"));
   				$("#" + completion + "autocomplete").attr("dbid", $(li).attr("selectionid"));
-  				console.log($(li).attr("selectionid"));
+  				console.log("MIAM:", $("#" + completion + "autocomplete").attr("dbid"));
   				}
   		}
     );

@@ -36,13 +36,11 @@ public class User {
 	private List<Purchase>	commands = new ArrayList<Purchase>();
 
 	public Integer			getId() { return id; }
-	public String			getLogin() { return login; }
 	public String			getMail() { return mail; }
 	public String			getPassword() { return password; }
 	public int				getRights() { return rights; }
 	public List<Purchase>	getCommands() { return commands; }
 
-	public void setLogin(String login) { this.login = login; }
 	public void setPassword(String password) { this.password = password; }
 	public void setMail(String mail) { this.mail = mail; }
 	public void setRights(int rights) { this.rights = rights; }
@@ -51,5 +49,11 @@ public class User {
 
 	public void	addPurchase(Purchase p) {
 		commands.add(p);
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
 	}
 }

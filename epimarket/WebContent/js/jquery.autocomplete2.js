@@ -284,7 +284,6 @@ jQuery.autocomplete = function(input, options) {
 	function dataToDom(data) {
 		var ul = document.createElement("ul");
 		var num = data.length;
-
 		// limited results to a max number
 		if( (options.maxItemsToShow > 0) && (options.maxItemsToShow < num) ) num = options.maxItemsToShow;
 
@@ -292,10 +291,11 @@ jQuery.autocomplete = function(input, options) {
 			var row = data[i];
 			if (!row) continue;
 			var li = document.createElement("li");
+			$(li).attr("selectionid", num);
 			if (options.formatItem) {
 				li.innerHTML = options.formatItem(row, i, num);
 				li.selectValue = row[0];
-				$(li).attr("selectionid", num);
+				console.log("====>" + num);
 			} else {
 				li.innerHTML = row[0];
 				li.selectValue = row[0];
@@ -309,10 +309,6 @@ jQuery.autocomplete = function(input, options) {
 			}
 			li.extra = extra;
 			ul.appendChild(li);
-			if (i == 0) {
-				options.onItemSelect(li);
-				$(li).attr("selectionid", num);	
-			}
 			$(li).hover(
 				function() { $("li", ul).removeClass("ac_over"); $(this).addClass("ac_over"); active = $("li", ul).indexOf($(this).get(0)); },
 				function() { $(this).removeClass("ac_over"); }

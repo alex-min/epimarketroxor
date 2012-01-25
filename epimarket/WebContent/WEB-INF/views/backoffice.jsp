@@ -61,9 +61,10 @@
 	</table>
 </div>
 <script type="text/javascript" src="/epimarket/js/autocomplete.js"></script>
+<script type="text/javascript" src="/epimarket/js/backoffice_book.js"></script>
 <script type="text/javascript">
-AddCompletion("category");
-AddCompletion("author");
-AddCompletion("picture");
+AddCompletion("category", true, 2);
+AddCompletion("author", true, 2);
+AddCompletion("picture", true, 2);
 </script>
 
