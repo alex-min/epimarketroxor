@@ -26,7 +26,8 @@ function postThis( obj ) {
 			+ fieldName + "/" +
 			id
 			,
-			obj.html()
+			
+			"data=" + encodeURI(obj.html())
 	);
 	if (obj.hasClass("replacenext")) {
 		$(obj.parents("td").next().children()[0]).html(obj.html());
@@ -53,7 +54,7 @@ $(document).ready(function () {
 			$(this).addClass("onselect");
 			$("#shadowtext").css({
 				"visibility" : "visible",
-				"position" : "fixed",
+				"position" : "absolute",
 				"top" : $(this).position().top + "px",
 				"left" : $(this).position().left + "px",
 				"width" : $(this).width(),
