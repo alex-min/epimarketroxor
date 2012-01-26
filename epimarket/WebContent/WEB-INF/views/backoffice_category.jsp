@@ -12,7 +12,7 @@
 
 <h1>Cateory Management</h1>
 <div style="border: 1px solid">
-<p>Category List</p>
+<p class="e-pannel">Category List</p>
 <table abbr="category">
 	<tr>
 		<th ><spring:message code="category.id"/></th>
@@ -30,7 +30,7 @@
 </table>
 </div>
 <div style="border: 1px solid">
-	<p>Add book</p>
+	<p class="e-pannel">Add book</p>
 	<table>
 		<tr>
 			<th><spring:message code="category.name"/></th>

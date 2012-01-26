@@ -12,7 +12,7 @@
 
 <h1>User Management</h1>
 <div style="border: 1px solid">
-<p>User List</p>
+<p class="e-pannel">User List</p>
 <table abbr="user">
 	<tr>
 		<th ><spring:message code="user.id"/></th>
@@ -35,7 +35,7 @@
 </table>
 </div>
 <div style="border: 1px solid">
-	<p>Add book</p>
+	<p class="e-pannel">Add book</p>
 	<table>
 		<tr>
 			<th><spring:message code="user.login"/></th>
