@@ -1,10 +1,9 @@
 $("form").submit(function (a) {
-		var inputs = $(".post");
+		var inputs = $(".ac_input");
 		for (var i = 0; i < inputs.length; ++i) {
 			if ($(inputs[i]).hasClass('ac_input')) {
 				$(inputs[i]).val($(inputs[i]).attr("dbid"));
 				//$(inputs[i]).css({color: "#ffffff"});
-				alert('');
 			}
 		}
 });
