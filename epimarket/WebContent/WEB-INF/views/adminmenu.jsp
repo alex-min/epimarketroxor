@@ -10,12 +10,18 @@
     
 <jsp:include page="header.jsp"></jsp:include>
 
-<ul>
+<div class="topbar">
+<div class="topbar-inner">
+<div class="container">
+<ul class="nav">
 		<li><a href="/epimarket/app/"><spring:message code="admin.back"/></a></li>
 		<li><a href="/epimarket/app/admin/book/"><spring:message code="admin.book"/></a></li>
 		<li><a href="/epimarket/app/admin/user/"><spring:message code="admin.user"/></a></li>
 		<li><a href="/epimarket/app/admin/category/"><spring:message code="admin.category"/></a></li>
 		<li><a href="/epimarket/app/admin/author/"><spring:message code="admin.author"/></a></li>
 </ul>
+</div>
+</div>
+</div>
 
     

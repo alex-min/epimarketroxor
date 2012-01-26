@@ -10,7 +10,10 @@
 <jsp:include page="header.jsp" />
 
 
-<ul>
+<div class="topbar">
+<div class="topbar-inner">
+<div class="container">
+<ul id="left-menu" class="nav">
 	<c:if test="${sessionScope.webdata.user.logged == true
 	&& sessionScope.webdata.user.user.rights == 3}">
 	<li><a href="/epimarket/app/admin/"><spring:message code="menu.admin"/></a></li>
@@ -32,3 +35,6 @@
 	<li><a href="/epimarket/app/logout"><spring:message code="menu.logout"/></a></li>
 	</c:if>
 </ul>
+</div>
+</div>
+</div>
