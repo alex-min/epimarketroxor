@@ -21,7 +21,7 @@
 			Not enough stock for this item :<br />
 		</c:if>
 		<c:forEach items="${lNotAvailable}" var="curr">
-			${curr}<br />
+			${fc:escapeXml(curr) }<br />
 		</c:forEach>
 		<br />
 		Veuillez retirez les articles manquant de votre commande. 

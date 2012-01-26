@@ -12,6 +12,6 @@
 <link rel="stylesheet" href="/epimarket/style/jquery.autocomplete.css" type="text/css" />
 <link rel="stylesheet" href="/epimarket/style/style.css" type="text/css" />
 	
-<title>${webtitle}</title>
+<title>${fc:escapeXml(webtitle) }</title>
 </head>
 <body>

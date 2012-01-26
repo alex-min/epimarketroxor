@@ -23,8 +23,8 @@
 	<c:if test="${listCart != null && listCart.isEmpty() == false}">
 		<c:forEach items="${listCart}" var="curr">
 			<tr>
-				<td>${curr.title}</td>
-				<td>${curr.author.lastName} ${curr.author.firstName}</td>
+				<td>${fc:escapeXml((curr.title) }</td>
+				<td>${fc:escapeXml(curr.author.lastName) } ${fc:escapeXml(curr.author.firstName) }</td>
 				<td>${cartMap.get(curr.id)}</td>
 				<td><a href="removeOne/${curr.id}">click</a></td>
 				<td><a href="removeAll/${curr.id}">click</a></td>
