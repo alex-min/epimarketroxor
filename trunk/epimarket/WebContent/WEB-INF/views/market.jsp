@@ -39,7 +39,9 @@
 	
 </td>
 <td>
+<c:if test="${sessionScope.webdata.user.logged == true}">
 <a href="market/book/${current.id }/addCart"><spring:message code="market.addToCart"/></a>
+</c:if>
 </td>
 </tr>
 

@@ -11,7 +11,6 @@
 
 
 <ul>
-	${sessionScope.webdata.user.logged }
 	<c:if test="${ sessionScope.webdata == null || 
 	sessionScope.webdata.user.logged == false}">
 	<li><a href="/epimarket/app/login"><spring:message code="menu.login"/></a></li>
