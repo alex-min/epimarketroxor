@@ -22,3 +22,6 @@
 <title>${fc:escapeXml(webtitle) }</title>
 </head>
 <body>
+<a href="/epimarket/app/" alt="banner" >
+<img src="/epimarket/resources/banner.png" class="banner"/>
+</a>

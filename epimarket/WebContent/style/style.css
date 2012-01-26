@@ -11,6 +11,10 @@ table tbody th {
 	border-right: 5px #C2C3C4;
 	}
 
+.banner {
+	margin: auto;
+	display: block;
+}
 /*
 #left-menu {
 	float : left;
