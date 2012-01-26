@@ -11,11 +11,13 @@
   <tr>
     <th>Login</th>
     <th>Comment</th>
+    <th>Rate</th>
   </tr>
   <c:forEach items="${comments }" var="com">
   <tr>
-  	<td> ${com.user.login }</td>
-  	<td> ${com.comment }</td>
+  	<td>${com.user.login }</td>
+  	<td>${com.comment }</td>
+  	<td><img src="/epimarket/resources/${com.rate}.0_star.gif" /></td>
   </tr>
   </c:forEach>
   <tr>
@@ -24,9 +26,17 @@
    <td> <form action="add" method="POST" >
    	<input type="text" name="comment"/>
    	<input type="hidden" name="id" value="${books[0].id }"/>
+	 <select name="rate">
+	  <option value="1">1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	</select> 
    </form>
-   
    </td>
+
   </c:if>
   </tr>
 </table>

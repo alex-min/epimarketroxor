@@ -73,11 +73,5 @@ public final class EMF
 		tx.rollback();
 	}
 
-	public static void		start() {
-		session.close();
-		session	= HibernateUtil.getMySessionFactory().openSession();
-		tx = session.beginTransaction();
-	}
-
 }
 

@@ -25,6 +25,8 @@ public class Comment {
 
 	private String		comment;
 
+	private int			rate;
+
 	public User getUser() {
 		return user;
 	}
@@ -48,5 +50,11 @@ public class Comment {
 	}
 	public void setBook(Book book) {
 		this.book = book;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
 	}
 }

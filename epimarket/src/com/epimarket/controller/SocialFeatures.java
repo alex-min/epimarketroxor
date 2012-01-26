@@ -40,6 +40,7 @@ public class SocialFeatures {
 	public String addComment
 	(HttpServletRequest rqst, HttpServletResponse resp, Model model,
 			@RequestParam("comment") String comment,
+			@RequestParam("rate") int rate,
 			@RequestParam("id") int articleId,
 			@PathVariable("id") int id
 			) {
@@ -59,6 +60,7 @@ public class SocialFeatures {
 		Book book = b.get(0);
 		c.setBook(book);
 		book.getCommentList().add(c);
+		c.setRate(rate);
 		EMF.getSession().save(c);
 		EMF.commit();
 		Criteria crit2 = EMF.getSession().createCriteria(Comment.class);
