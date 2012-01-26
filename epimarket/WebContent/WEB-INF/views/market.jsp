@@ -15,6 +15,7 @@
 <th><spring:message code="market.table.book_id"/></th>
 <th><spring:message code="market.table.title"/></th>
 <th><spring:message code="market.table.stock"/></th>
+<th></th>
 </tr>
 <c:forEach items="${books}" var="current">
 <tr>
@@ -37,7 +38,11 @@
 	</c:choose>
 	
 </td>
+<td>
+<a href="market/book/${current.id }/addCart"><spring:message code="market.addToCart"/></a>
+</td>
 </tr>
+
 </c:forEach>
 
 </table>
