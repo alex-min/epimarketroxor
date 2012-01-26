@@ -9,7 +9,7 @@
 
 <jsp:include page="menu.jsp" />
 
-${bookId.title}
+${fc:escapeXml(bookId.title) }
 
 <p>
 	<c:if test="${added == true}">
