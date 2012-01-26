@@ -29,11 +29,11 @@ public class WebUser {
 	public boolean		isCheckoutAvailable() { return checkoutAvailable; }
 	public User			getUser() { return user; }
 
-	public void			setUser(User user) { user = user; }
+	public void			setUser(User user) { this.user = user; }
 	public void			setCheckoutAvailable(boolean checkoutAvailable) {
 		this.checkoutAvailable = checkoutAvailable;
 	}
-	public void			setLogged(boolean logged) { logged = logged; }
+	public void			setLogged(boolean logged) { this.logged = logged; }
 
 	public void			addToCart(Integer id) {
 		checkoutAvailable = false;
