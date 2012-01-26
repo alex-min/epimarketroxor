@@ -11,6 +11,10 @@
 
 
 <ul>
+	<c:if test="${sessionScope.webdata.user.logged == true
+	&& sessionScope.webdata.user.user.rights == 3}">
+	<li><a href="/epimarket/app/admin/"><spring:message code="menu.admin"/></a></li>
+	</c:if>
 	<c:if test="${ sessionScope.webdata == null || 
 	sessionScope.webdata.user.logged == false}">
 	<li><a href="/epimarket/app/login"><spring:message code="menu.login"/></a></li>
@@ -21,7 +25,10 @@
 	
 	<c:if test="${ sessionScope.webdata == null || 
 	sessionScope.webdata.user.logged == false}">
-		<li><a href="/epimarket/app/market/cart/"><spring:message code="menu.cart"/></a></li>
+	<li><a href="/epimarket/app/market/cart/"><spring:message code="menu.cart"/></a></li>
 	</c:if>
-
+	
+	<c:if test="${sessionScope.webdata.user.logged == true}">
+	<li><a href="/epimarket/app/logout"><spring:message code="menu.logout"/></a></li>
+	</c:if>
 </ul>

@@ -35,10 +35,18 @@ public class IndexSpring {
 			method = RequestMethod.GET)
 	public String login(HttpServletRequest rqst, HttpServletResponse resp, Model model)
 	{
-		System.out.println("Login page");
-		rqst.setAttribute("title", "Login");
-
 		return "login";
+	}
+
+
+	@RequestMapping(
+			value = "logout",
+			method = RequestMethod.GET)
+	public String logout(HttpServletRequest rqst, HttpServletResponse resp, Model model)
+	{
+		WD.getData().getUser().setLogged(false);
+		WD.getData().getUser().setUser(null);
+		return "index";
 	}
 
 
