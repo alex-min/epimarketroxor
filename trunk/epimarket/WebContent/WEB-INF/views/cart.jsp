@@ -9,15 +9,13 @@
 
 <jsp:include page="menu.jsp" />
 
-<p>Test de page du panier d'achat</p>
-
 <table>
 	<tr>
-		<th>Title</th>
-		<th>Author</th>
-		<th>Quantity</th>
-		<th>Remove One</th>
-		<th>Remove All</th>
+		<th><spring:message code="market.table.title"/></th>
+		<th><spring:message code="market.table.author"/></th>
+		<th><spring:message code="market.table.stock"/></th>
+		<th><spring:message code="market.removeOne"/></th>
+		<th><spring:message code="market.removeAll"/></th>
 	</tr>
 
 	<c:if test="${listCart != null && listCart.isEmpty() == false}">
@@ -34,7 +32,7 @@
 </table>
 
 	<c:if test="${listCart == null || listCart.isEmpty() == true }">
-		Votre panier est vide.
+		<spring:message code="market.cartEmpty"/>.
 	</c:if>
 	<c:if test="${listCart != null && listCart.isEmpty() == false }">
 		<a href="checkout/">Cliquez ici pour terminer votre commande.</a>

@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
+ 
 <jsp:include page="menu.jsp" />
 
 <table>
@@ -40,11 +40,9 @@
 </td>
 <td>
 <c:if test="${sessionScope.webdata.user.logged == true}">
-<a href="market/book/${current.id }/addCart"><spring:message code="market.addToCart"/></a>
+<a href="/epimarket/app/market/book/${current.id }/addCart"><spring:message code="market.addToCart"/></a>
 </c:if>
-<c:if test="${sessionScope.webdata.user.logged == true}">
-<a href="market/book/${current.id }/comment/"><spring:message code="market.comment"/></a>
-</c:if>
+<a href="/epimarket/app/market/book/${current.id }/comment/"><spring:message code="market.comment"/></a>
 </td>
 </tr>
 

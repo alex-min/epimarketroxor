@@ -27,11 +27,19 @@ public class SocialFeatures {
 	public String getList
 	(HttpServletRequest rqst, HttpServletResponse resp, Model model,
 			@PathVariable("id") int id) {
-		Criteria crit = EMF.getSession().createCriteria(Book.class);
-		crit.add(Restrictions.eq("id", id));
-		@SuppressWarnings("unchecked")
-		List<Book> b = crit.list();
-		rqst.setAttribute("books", b);
+		try {
+			Criteria crit = EMF.getSession().createCriteria(Book.class);
+			crit.add(Restrictions.eq("id", id));
+			@SuppressWarnings("unchecked")
+			List<Book> b = crit.list();
+			Book b1 = b.get(0);
+			rqst.setAttribute("books", b);
+			Criteria crit2 = EMF.getSession().createCriteria(Comment.class);
+			crit2.add(Restrictions.eq("book", b1));
+			@SuppressWarnings("unchecked")
+			List<Comment> comments = crit2.list();
+			rqst.setAttribute("comments", comments);
+		} catch (Exception e) {}
 		return "social_comment";
 	}
 
@@ -44,31 +52,33 @@ public class SocialFeatures {
 			@RequestParam("id") int articleId,
 			@PathVariable("id") int id
 			) {
-		if (WD.getData().getUser().isLogged() == false)
-			return "index";
-		User u = WD.getData().getUser().getUser();
-		EMF.save(u);
-		EMF.commit();
-		Comment c = new Comment();
-		c.setUser(u);
-		c.setComment(comment);
-		Criteria crit = EMF.getSession().createCriteria(Book.class);
-		crit.add(Restrictions.eq("id", articleId));
-		@SuppressWarnings("unchecked")
-		List<Book> b = crit.list();
-		rqst.setAttribute("books", b);
-		Book book = b.get(0);
-		c.setBook(book);
-		book.getCommentList().add(c);
-		c.setRate(rate);
-		EMF.getSession().save(c);
-		EMF.commit();
-		Criteria crit2 = EMF.getSession().createCriteria(Comment.class);
-		crit2.add(Restrictions.eq("book", book));
-		@SuppressWarnings("unchecked")
-		List<Comment> comments = crit2.list();
-		rqst.setAttribute("comments", comments);
-		System.out.println("=>" + comments.size());
+		try {
+			if (WD.getData().getUser().isLogged() == false)
+				return "index";
+			User u = WD.getData().getUser().getUser();
+			EMF.save(u);
+			EMF.commit();
+			Comment c = new Comment();
+			c.setUser(u);
+			c.setComment(comment);
+			Criteria crit = EMF.getSession().createCriteria(Book.class);
+			crit.add(Restrictions.eq("id", articleId));
+			@SuppressWarnings("unchecked")
+			List<Book> b = crit.list();
+			rqst.setAttribute("books", b);
+			Book book = b.get(0);
+			c.setBook(book);
+			book.getCommentList().add(c);
+			c.setRate(rate);
+			EMF.getSession().save(c);
+			EMF.commit();
+			Criteria crit2 = EMF.getSession().createCriteria(Comment.class);
+			crit2.add(Restrictions.eq("book", book));
+			@SuppressWarnings("unchecked")
+			List<Comment> comments = crit2.list();
+			rqst.setAttribute("comments", comments);
+			System.out.println("=>" + comments.size());
+		} catch (Exception e) {}
 		return  "social_comment";
 	}
 

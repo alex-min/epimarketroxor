@@ -12,7 +12,7 @@
 
 <h1>Book Management</h1>
 <div style="border: 1px solid">
-<p>Book List</p>
+<p class="e-pannel">Book List</p>
 <table>
 	<tr>
 		<th><spring:message code="market.table.cover_picture"/></th>
@@ -39,7 +39,7 @@
 </table>
 </div>
 <div style="border: 1px solid">
-	<p>Add book</p>
+	<p class="e-pannel">Add book</p>
 	<table>
 		<tr>
 			<th><spring:message code="market.table.cover_picture"/></th>
