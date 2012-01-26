@@ -19,6 +19,7 @@
 		<mapping class="com.epimarket.entity.Category"/>
 		<mapping class="com.epimarket.entity.User"/>
 		<mapping class="com.epimarket.entity.Purchase"/>
+		<mapping class="com.epimarket.entity.Comment"/>
 
 	</session-factory>
 </hibernate-configuration>

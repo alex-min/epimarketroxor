@@ -291,6 +291,7 @@ jQuery.autocomplete = function(input, options) {
 			var row = data[i];
 			if (!row) continue;
 			var li = document.createElement("li");
+			options.onItemSelect(li);
 			if (options.formatItem) {
 				li.innerHTML = options.formatItem(row, i, num);
 				li.selectValue = row[0];
