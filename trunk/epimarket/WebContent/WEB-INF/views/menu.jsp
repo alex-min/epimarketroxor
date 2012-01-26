@@ -11,16 +11,17 @@
 
 
 <ul>
-	<c:if test="${ sessionScope.webData == null || 
-	sessionScope.webData.getUser().isLogged() == false}">
+	${sessionScope.webdata.user.logged }
+	<c:if test="${ sessionScope.webdata == null || 
+	sessionScope.webdata.user.logged == false}">
 	<li><a href="/epimarket/app/login"><spring:message code="menu.login"/></a></li>
 	<li><a href="/epimarket/app/register"><spring:message code="menu.register"/></a></li>
 	</c:if>
 	
 	<li><a href="/epimarket/app/market"><spring:message code="menu.market"/></a></li>
 	
-	<c:if test="${ sessionScope.webData == null || 
-	sessionScope.webData.getUser().isLogged() == false}">
+	<c:if test="${ sessionScope.webdata == null || 
+	sessionScope.webdata.user.logged == false}">
 		<li><a href="/epimarket/app/market/cart/"><spring:message code="menu.cart"/></a></li>
 	</c:if>
 

@@ -14,7 +14,7 @@
 		out.println("<a href=\"/epimarket/app/register\">Don\'t have an account yet, click here</a>");
 %>
 
-<form method="POST" action="loginaction">
+<form method="POST" action="login">
 <table>
 <tr>
 <td><input name="login" class="post"/></td>
