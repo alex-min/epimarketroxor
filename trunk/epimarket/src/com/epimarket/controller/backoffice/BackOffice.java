@@ -34,6 +34,14 @@ public class BackOffice {
 	}*/
 
 	@RequestMapping(
+			value = "admin/",
+			method = RequestMethod.GET)
+	public String adminPage()
+	{
+		return "admin";
+	}
+
+	@RequestMapping(
 			value = "admin/book/",
 			method = RequestMethod.GET)
 	public ModelAndView all()

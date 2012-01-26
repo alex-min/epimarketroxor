@@ -8,9 +8,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="adminmenu.jsp"></jsp:include>
 
-<p>Temporary</p>
 <h1>Cateory Management</h1>
 <div style="border: 1px solid">
 <p>Category List</p>

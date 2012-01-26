@@ -8,7 +8,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="adminmenu.jsp"></jsp:include>
 
 <h1>Author Management</h1>
 <div style="border: 1px solid">

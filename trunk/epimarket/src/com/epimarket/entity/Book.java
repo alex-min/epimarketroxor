@@ -1,11 +1,15 @@
 package com.epimarket.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,6 +28,9 @@ public class Book {
 	private Category	category;
 	private String		picture;
 	private double		price;
+
+	@OneToMany
+	private List<Comment> commentList = new ArrayList<Comment>();
 
 	// getters
 	public int		getId() { return id; }
@@ -46,6 +53,12 @@ public class Book {
 	@Override
 	public String		toString() {
 		return "id:" + id + ", title:" + title + ", author:" + author.getFirstName() + " " + author.getLastName();
+	}
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
 	}
 
 }

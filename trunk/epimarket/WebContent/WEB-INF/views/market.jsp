@@ -42,6 +42,9 @@
 <c:if test="${sessionScope.webdata.user.logged == true}">
 <a href="market/book/${current.id }/addCart"><spring:message code="market.addToCart"/></a>
 </c:if>
+<c:if test="${sessionScope.webdata.user.logged == true}">
+<a href="market/book/${current.id }/comment/"><spring:message code="market.comment"/></a>
+</c:if>
 </td>
 </tr>
 
