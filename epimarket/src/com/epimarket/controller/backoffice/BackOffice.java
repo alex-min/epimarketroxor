@@ -74,7 +74,6 @@ public class BackOffice {
 			try {
 				EMF.begin();
 				EMF.getSession().delete(b);
-				EMF.commit();
 			} catch (Exception e) {}
 		} else
 			System.err.println( "book is null");
@@ -106,7 +105,6 @@ public class BackOffice {
 		try {
 			EMF.begin();
 			EMF.save(book);
-			EMF.commit();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			m.addAttribute("error", e.getMessage());
