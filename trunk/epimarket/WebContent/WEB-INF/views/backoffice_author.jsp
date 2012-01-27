@@ -12,7 +12,7 @@
 
 <h1>Author Management</h1>
 <div style="border: 1px solid">
-<p>Author List</p>
+<p class="e-pannel">Author List</p>
 <table abbr="author">
 	<tr>
 		<th ><spring:message code="author.id"/></th>
@@ -32,7 +32,7 @@
 </table>
 </div>
 <div style="border: 1px solid">
-	<p>Add Author</p>
+	<p class="e-pannel">Add Author</p>
 	<table>
 		<tr>
 			<th><spring:message code="author.firstName"/></th>

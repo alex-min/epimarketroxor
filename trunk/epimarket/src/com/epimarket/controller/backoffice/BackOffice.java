@@ -2,8 +2,11 @@ package com.epimarket.controller.backoffice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.beanutils.PropertyUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epimarket.database.EMF;
@@ -119,5 +123,31 @@ public class BackOffice {
 		}
 
 		return "redirect:/app/admin/book/";
+	}
+
+	@RequestMapping(value = "ajax/change/book/title/{id}",
+			method=RequestMethod.POST)
+	public String getList
+	(HttpServletRequest rqst, HttpServletResponse resp, Model model,
+			@PathVariable("id") int id,
+			@RequestParam("data") String data
+			) {
+		String type = "title";
+		Criteria crit = EMF.getSession().createCriteria(Book.class);
+		crit.add(Restrictions.eq("id", id));
+		Book cat = (Book) crit.uniqueResult();
+		try {
+			System.out.println("type:" + type);
+
+			PropertyUtils.setSimpleProperty(cat, type,
+					data
+					);
+			EMF.update(cat);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "raw";
 	}
 }
