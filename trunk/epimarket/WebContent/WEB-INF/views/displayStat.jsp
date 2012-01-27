@@ -10,3 +10,5 @@
 <jsp:include page="menu.jsp" />
 
 <p>stats</p>
+
+<img src="/home/colin_f/chart.jpg"/>
