@@ -24,7 +24,7 @@ public class WebUser {
 
 
 
-
+	public boolean		isAdmin() { return true; }
 	public boolean		isLogged() { return logged; }
 	public boolean		isCheckoutAvailable() { return checkoutAvailable; }
 	public User			getUser() { return user; }

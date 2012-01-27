@@ -73,7 +73,7 @@ public class StatisticController
 				false // Configure chart to generate URLs?
 				);
 		try {
-				ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/mchart.jpg"), chart, 500, 300);
+				ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/chart.jpg"), chart, 500, 300);
 		} catch (Exception e) {
 			System.out.println("Problem occurred creating chart.");
 			e.printStackTrace();
@@ -107,13 +107,13 @@ public class StatisticController
 				"Months ago", "Total of commands prices ($)", ds2, PlotOrientation.VERTICAL,
 				false, true, false);
 		try {
-			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/mchart2.jpg"), chart2, 500, 300);
-			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/mchart3.jpg"), chart3, 500, 300);
+			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/chart2.jpg"), chart2, 500, 300);
+			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/chart3.jpg"), chart3, 500, 300);
 		} catch (Exception e) {
 			System.out.println("Problem occurred creating chart.");
 			e.printStackTrace();
 		}
-
+		System.out.println("===>" + System.getProperty("user.dir"));
 		return "displayStat";
 	}
 
@@ -159,7 +159,7 @@ public class StatisticController
 				false // Configure chart to generate URLs?
 				);
 		try {
-				ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/dchart.jpg"), chart, 500, 300);
+				ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/chart.jpg"), chart, 500, 300);
 		} catch (Exception e) {
 			System.out.println("Problem occurred creating chart.");
 			e.printStackTrace();
@@ -192,8 +192,8 @@ public class StatisticController
 				"Months ago", "Total of commands prices ($)", ds2, PlotOrientation.VERTICAL,
 				false, true, false);
 		try {
-			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/dchart2.jpg"), chart2, 500, 300);
-			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/dchart3.jpg"), chart3, 500, 300);
+			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/chart2.jpg"), chart2, 500, 300);
+			ChartUtilities.saveChartAsJPEG(new File("/home/colin_f/chart3.jpg"), chart3, 500, 300);
 		} catch (Exception e) {
 			System.out.println("Problem occurred creating chart.");
 			e.printStackTrace();
