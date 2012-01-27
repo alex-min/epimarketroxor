@@ -14,6 +14,8 @@
 <th><spring:message code="market.table.cover_picture"/></th>
 <th><spring:message code="market.table.book_id"/></th>
 <th><spring:message code="market.table.title"/></th>
+<th><spring:message code="market.table.author"/></th>
+<th abbr="price"><spring:message code="market.table.price"/></th>
 <th><spring:message code="market.table.stock"/></th>
 <th></th>
 </tr>
@@ -27,6 +29,8 @@
 </td>
 <td>${current.id }</td>
 <td>${current.title }</td>
+<td>${current.author.firstName } ${current.author.lastName }</td>
+<td>${current.price}</td>
 <td>
 	<c:choose>
 	<c:when test="${current.stock == 0 }">
