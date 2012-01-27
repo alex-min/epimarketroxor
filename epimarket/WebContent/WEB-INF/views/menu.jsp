@@ -26,8 +26,7 @@
 	
 	<li><a href="/epimarket/app/market"><spring:message code="menu.market"/></a></li>
 	
-	<c:if test="${ sessionScope.webdata == null || 
-	sessionScope.webdata.user.logged == false}">
+	<c:if test="${sessionScope.webdata.user.logged == true}">
 	<li><a href="/epimarket/app/market/cart/"><spring:message code="menu.cart"/></a></li>
 	</c:if>
 	
