@@ -125,23 +125,28 @@ public class BackOffice {
 		return "redirect:/app/admin/book/";
 	}
 
-	@RequestMapping(value = "ajax/change/book/title/{id}",
+	@RequestMapping(value = "ajax/change/book/{type}/{id}",
 			method=RequestMethod.POST)
 	public String getList
 	(HttpServletRequest rqst, HttpServletResponse resp, Model model,
+			@PathVariable("type") String type,
 			@PathVariable("id") int id,
 			@RequestParam("data") String data
 			) {
-		String type = "title";
 		Criteria crit = EMF.getSession().createCriteria(Book.class);
 		crit.add(Restrictions.eq("id", id));
 		Book cat = (Book) crit.uniqueResult();
 		try {
 			System.out.println("type:" + type);
-
-			PropertyUtils.setSimpleProperty(cat, type,
-					data
-					);
+			if (type.compareTo("price") == 0) {
+				PropertyUtils.setSimpleProperty(cat, type,
+						Float.parseFloat(data)
+						);
+			} else {
+				PropertyUtils.setSimpleProperty(cat, type,
+						data
+						);
+			}
 			EMF.update(cat);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

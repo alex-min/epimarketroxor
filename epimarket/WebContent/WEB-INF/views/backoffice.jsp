@@ -18,8 +18,9 @@
 		<th><spring:message code="market.table.cover_picture"/></th>
 		<th><spring:message code="market.table.book_id"/></th>
 		<th abbr="title"><spring:message code="market.table.title"/></th>
-		<th>Author</th>
-	</tr>
+		<th><spring:message code="market.table.author"/></th>
+		<th abbr="price"><spring:message code="market.table.price"/></th>
+		</tr>
 	<c:forEach items="${books }" var="current">
 	<tr>
 	<td style="width:50px"><div>${current.id }</div></td>
@@ -31,6 +32,7 @@
 	</td>
 	<td><div class="editable">${current.title }</div></td>
 	<td>${current.author.firstName } ${current.author.lastName }</td>
+	<td><div class="editable">${current.price }</div></td>
 	<td><a href="delete/${current.id}/">
 	<spring:message code="backoffice.delete"/>
 	</a></td>
