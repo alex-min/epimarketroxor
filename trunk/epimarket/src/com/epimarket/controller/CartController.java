@@ -75,7 +75,6 @@ public class CartController
 		Purchase	command = new Purchase();
 
 		if (WD.getData().getUser().isCheckoutAvailable() == false) {
-			System.out.println("PPPPPPPPPDDDDDDDDDDD");
 			return "redirect:/app/market/cart/checkout/";
 		}
 		try {
@@ -95,6 +94,7 @@ public class CartController
 			e.printStackTrace();
 			return "errorCheckout";
 		}
+		BillGenerator.generate(command);
 		WD.getData().getUser().setCheckoutAvailable(false);
 		WD.getData().getUser().getCart().clear();
 		return "checkoutValidation";

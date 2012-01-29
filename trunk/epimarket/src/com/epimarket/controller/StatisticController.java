@@ -80,7 +80,7 @@ public class StatisticController
 		end = cal.getTime();
 		String	barValue1	= new String();
 		String	barValue2	= new String();
-		String	barBottom	= "|6|5|4|3|2|1";
+		String	barBottom	= "|5|4|3|2|1|0";
 		Integer	max1		= 0;
 		Integer	max2		= 0;
 		for (Integer i = 5; i >= 0; --i) {
@@ -173,7 +173,7 @@ public class StatisticController
 		end = cal.getTime();
 		String	barValue1	= new String();
 		String	barValue2	= new String();
-		String	barBottom	= "|6|5|4|3|2|1";
+		String	barBottom	= "|6|5|4|3|2|1|0";
 		Integer	max1		= 0;
 		Integer	max2		= 0;
 		for (Integer i = 6; i >= 0; --i) {
