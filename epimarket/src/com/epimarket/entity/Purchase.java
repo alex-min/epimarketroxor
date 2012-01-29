@@ -24,7 +24,7 @@ public class Purchase {
 	@OneToMany
 	private List<Book>		command = new ArrayList<Book>();
 	private int				nbArticles = 0;
-	private int				fullPrice = 0;
+	private double				fullPrice = 0;
 
 	public int			getId() { return id; }
 	public Date			getDate() { return date; }
@@ -45,10 +45,10 @@ public class Purchase {
 	public void setNbArticles(int nbArticles) {
 		this.nbArticles = nbArticles;
 	}
-	public int getFullPrice() {
+	public double getFullPrice() {
 		return fullPrice;
 	}
-	public void setFullPrice(int fullPrice) {
+	public void setFullPrice(double fullPrice) {
 		this.fullPrice = fullPrice;
 	}
 }
