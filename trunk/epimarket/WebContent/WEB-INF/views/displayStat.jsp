@@ -11,4 +11,13 @@
 
 <p>stats</p>
 
-<img src="/home/colin_f/chart.jpg"/>
+<div>
+<img src="http://chart.apis.google.com/chart?chxl=0:${barBottom}|1:${max1}&chxt=x,y&chs=800x300&cht=bvg&chd=t:${barValue1}&chg=20,50&chtt=${bTitle1}"/>
+</div>
+<div>
+<img src="http://chart.apis.google.com/chart?chxl=0:${barBottom}|1:${max2}&chxt=x,y&chs=800x300&cht=bvg&chd=t:${barValue2}&chg=20,50&chtt=${bTitle2}"/>
+</div>
+
+<div>
+<img src="https://chart.googleapis.com/chart?cht=p3&chs=750x300&chd=t:${pieValue}&chl=${pieName}&chtt=${pieTitle}" border="0"/>
+</div>
