@@ -34,7 +34,7 @@
 	<li><a href="/epimarket/app/logout"><spring:message code="menu.logout"/></a></li>
 	</c:if>
 	
-	<c:if test="${sessionScope.webdata.user.isAdmin()}">
+	<c:if test="${sessionScope.webdata.user.logged == true && sessionScope.webdata.user.isAdmin()}">
 	<li><a href="/epimarket/app/stat/monthly"><spring:message code="menu.statM"/></a></li>
 	<li><a href="/epimarket/app/stat/weekly"><spring:message code="menu.statW"/></a></li>
 	</c:if>

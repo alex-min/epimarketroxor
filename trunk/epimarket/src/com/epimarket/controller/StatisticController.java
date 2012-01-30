@@ -82,7 +82,7 @@ public class StatisticController
 		String	barValue2	= new String();
 		String	barBottom	= "|5|4|3|2|1|0";
 		Integer	max1		= 0;
-		Integer	max2		= 0;
+		Double	max2		= 0.0;
 		for (Integer i = 5; i >= 0; --i) {
 			begin = end;
 			cal.add(Calendar.MONTH, 1);
@@ -95,7 +95,7 @@ public class StatisticController
 			barValue1 += ((Integer)l.size()).toString();
 			if (l.size() > max1) { max1 = l.size(); }
 			//ds.setValue(l.size(), "nbCommands", i.toString());
-			Integer sum = 0;
+			Double sum = 0.0;
 			for (Object elm : l) {
 				sum += ((Purchase) elm).getFullPrice();
 				//System.out.println("===>" + sum);
@@ -175,7 +175,7 @@ public class StatisticController
 		String	barValue2	= new String();
 		String	barBottom	= "|6|5|4|3|2|1|0";
 		Integer	max1		= 0;
-		Integer	max2		= 0;
+		Double	max2		= 0.0;
 		for (Integer i = 6; i >= 0; --i) {
 			begin = end;
 			cal.add(Calendar.DAY_OF_WEEK, 1);
@@ -188,7 +188,7 @@ public class StatisticController
 			barValue1 += ((Integer)l.size()).toString();
 			if (l.size() > max1) { max1 = l.size(); }
 			//ds.setValue(l.size(), "nbCommands", i.toString());
-			Integer sum = 0;
+			Double sum = 0.0;
 			for (Object elm : l) {
 				sum += ((Purchase) elm).getFullPrice();
 				//System.out.println("===>" + sum);

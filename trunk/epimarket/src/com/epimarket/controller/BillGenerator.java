@@ -35,7 +35,7 @@ public class BillGenerator {
 	public	static void	generate(Purchase p) {
 
 		try {
-			String file = "/home/colin_f/bill" + p.getId();
+			String file = "/home/bill" + p.getId();
 			Document document = new Document();
 			PdfWriter.getInstance(document, new FileOutputStream(file));
 			document.open();
@@ -70,7 +70,7 @@ public class BillGenerator {
 		subCatPart = catPart.addSection(subPara);
 		addEmptyLine(subPara, 1);
 		System.out.println("price:" + p.getFullPrice());
-		subCatPart.add(new Paragraph(((Double)(p.getFullPrice())).toString()));
+		subCatPart.add(new Paragraph("$ " + ((Double)(p.getFullPrice())).toString()));
 
 		// Now add all this to the document
 		document.add(catPart);
@@ -111,17 +111,10 @@ public class BillGenerator {
 			Book b = (Book)(EMF.getSession().get(Book.class, i));
 			table.addCell(b.getTitle());
 			table.addCell(b.getAuthor().getLastName() + " " + b.getAuthor().getFirstName());
-			table.addCell(((Double)(b.getPrice())).toString());
+			table.addCell("$ " + ((Double)(b.getPrice())).toString());
 			table.addCell(WD.getData().getUser().getCart().get(i).toString());
-			table.addCell(((Double)(WD.getData().getUser().getCart().get(i) * b.getPrice())).toString());
+			table.addCell("$ " + ((Double)(WD.getData().getUser().getCart().get(i) * b.getPrice())).toString());
 		}
-		
-//		table.addCell("1.0");
-//		table.addCell("1.1");
-//		table.addCell("1.2");
-//		table.addCell("2.1");
-//		table.addCell("2.2");
-//		table.addCell("2.3");
 
 		subCatPart.add(table);
 	}
@@ -145,13 +138,13 @@ public class BillGenerator {
 
 		addEmptyLine(preface, 8);
 
-		preface.add(new Paragraph("Your information :", subFont));
+		preface.add(new Paragraph("Your informations :", subFont));
 		addEmptyLine(preface, 1);
 		preface.add(new Paragraph("Name : " + WD.getData().getUser().getUser().getLogin(), nFont));
 		preface.add(new Paragraph("Email : " + WD.getData().getUser().getUser().getMail(), nFont));
 		addEmptyLine(preface, 3);
 
-		preface.add(new Paragraph("Your information :", subFont));
+		preface.add(new Paragraph("Our informations :", subFont));
 		addEmptyLine(preface, 1);
 		preface.add(new Paragraph("Society : Epimarket", nFont));
 
